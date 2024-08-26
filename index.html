@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm bored</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/piranha.png" alt="piranha">
+            
+        </div>
+        <div>
+            <a>Im bored</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a a href="#" id="dilligaf">Do you like cars?</a></li>
+                <li><a href="#" id="about-link">About Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="driver">
+            <img src="images/image1.png" alt="Driver 1">
+            <div class="overlay">
+                <h2>Do you like cars?</h2>
+                <h1>I don't, but I like Carlos Sainz</h1>
+                <a href="carlos.html" class="who-link">WHO?</a>
+            </div>
+        </div>
+        <div class="driver">
+            <img src="images/image2.png" alt="Driver 2">
+            <div class="overlay">
+                
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Your Name</p>
+    </footer>
+    <!-- Dialog -->
+    <dialog id="car-dialog">
+        <p>DILLIGAF</p>
+    </dialog>
+
+    <script>
+        document.getElementById('dilligaf').addEventListener('click', function(event) {
+            event.preventDefault();
+            const dialog = document.getElementById('car-dialog');
+            dialog.showModal();
+            setTimeout(function() {
+                dialog.close();
+                window.location.href = 'carlos.html';
+            }, 1000);
+        });
+    </script>
+    <dialog id="about-dialog">
+        <img src="images/beg.png" alt="Begger">
+    </dialog>
+
+    <script>
+        document.getElementById('dilligaf').addEventListener('click', function(event) {
+            event.preventDefault();
+            const dialog = document.getElementById('car-dialog');
+            dialog.showModal();
+            setTimeout(function() {
+                dialog.close();
+                window.location.href = 'carlos.html';
+            }, 3000);
+        });
+
+        document.getElementById('about-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            const dialog = document.getElementById('about-dialog');
+            dialog.showModal();
+        });
+
+        // Close dialog when clicking outside of it
+        document.querySelectorAll('dialog').forEach(dialog => {
+            dialog.addEventListener('click', function(event) {
+                const rect = dialog.getBoundingClientRect();
+                const isInDialog = (
+                    rect.top <= event.clientY &&
+                    event.clientY <= rect.top + rect.height &&
+                    rect.left <= event.clientX &&
+                    event.clientX <= rect.left + rect.width
+                );
+                if (!isInDialog) {
+                    dialog.close();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
