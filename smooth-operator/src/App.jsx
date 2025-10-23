@@ -1,6 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { Navigate } from "react-router-dom"
-import Home from "./pages/Home.jsx"
+import { Routes, Route, Navigate } from "react-router-dom"
+import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Predictions from "./pages/Predictions"
@@ -17,7 +16,9 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Make leaderboard the homepage */}
+        <Route path="/" element={<Leaderboard />} />
+        
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route

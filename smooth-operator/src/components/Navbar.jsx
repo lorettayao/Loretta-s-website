@@ -19,6 +19,7 @@ function Navbar() {
         {!token && <Link to="/login" className="nav-link">Login</Link>}
         {!token && <Link to="/register" className="nav-link">Register</Link>}
         {token && <Link to="/predictions" className="nav-link">Predictions</Link>}
+
         {token && (
           <button onClick={handleLogout} className="logout-btn">
             Logout ({username})
