@@ -1,12 +1,24 @@
 import { useState } from "react"
+import api from "../services/api"
 
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [message, setMessage] = useState("")
+  const [token, setToken] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("Logging in:", username, password)
+    try {
+      const res = await api.post("/auth/login", { username, password })
+      setMessage(res.data.message)
+      setToken(res.data.token)
+      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("username", res.data.username)
+    } catch (err) {
+      console.error(err)
+      setMessage(err.response?.data?.message || "Login failed.")
+    }
   }
 
   return (
@@ -27,6 +39,8 @@ function Login() {
         /><br/><br/>
         <button type="submit">Login</button>
       </form>
+      <p>{message}</p>
+      {token && <p>Token saved in localStorage ✅</p>}
     </div>
   )
 }

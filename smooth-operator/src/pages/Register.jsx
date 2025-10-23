@@ -1,12 +1,20 @@
 import { useState } from "react"
+import api from "../services/api"
 
 function Register() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [message, setMessage] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("Registering:", username)
+    try {
+      const res = await api.post("/auth/register", { username, password })
+      setMessage(res.data.message)
+    } catch (err) {
+      console.error(err)
+      setMessage(err.response?.data?.message || "Registration failed.")
+    }
   }
 
   return (
@@ -19,7 +27,6 @@ function Register() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         /><br/><br/>
-        
         <input
           type="password"
           placeholder="Password"
@@ -28,6 +35,7 @@ function Register() {
         /><br/><br/>
         <button type="submit">Sign Up</button>
       </form>
+      <p>{message}</p>
     </div>
   )
 }
