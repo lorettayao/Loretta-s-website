@@ -1,11 +1,13 @@
 import { useState } from "react"
 import api from "../services/api"
+import { useNavigate } from "react-router-dom"
 
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [message, setMessage] = useState("")
   const [token, setToken] = useState("")
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -15,6 +17,7 @@ function Login() {
       setToken(res.data.token)
       localStorage.setItem("token", res.data.token)
       localStorage.setItem("username", res.data.username)
+      navigate("/")
     } catch (err) {
       console.error(err)
       setMessage(err.response?.data?.message || "Login failed.")
