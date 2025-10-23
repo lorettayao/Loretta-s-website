@@ -1,0 +1,22 @@
+export const drivers = [
+  "Max Verstappen",
+  "Sergio Perez",
+  "Charles Leclerc",
+  "Carlos Sainz",
+  "Lewis Hamilton",
+  "George Russell",
+  "Lando Norris",
+  "Oscar Piastri",
+  "Fernando Alonso",
+  "Lance Stroll",
+  "Esteban Ocon",
+  "Pierre Gasly",
+  "Yuki Tsunoda",
+  "Daniel Ricciardo",
+  "Valtteri Bottas",
+  "Zhou Guanyu",
+  "Kevin Magnussen",
+  "Nico Hülkenberg",
+  "Alex Albon",
+  "Logan Sargeant"
+]
